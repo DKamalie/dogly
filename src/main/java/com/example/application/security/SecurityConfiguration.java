@@ -1,6 +1,6 @@
 package com.example.application.security;
 
-import com.example.application.views.login.LoginView;
+import com.example.application.views.login.LoginView2;
 import com.vaadin.flow.spring.security.VaadinWebSecurity;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -27,7 +27,7 @@ public class SecurityConfiguration extends VaadinWebSecurity {
         // Icons from the line-awesome addon
         http.authorizeHttpRequests().requestMatchers(new AntPathRequestMatcher("/line-awesome/**/*.svg")).permitAll();
         super.configure(http);
-        setLoginView(http, LoginView.class);
+        setLoginView(http, LoginView2.class);
     }
 
 }
