@@ -7,14 +7,15 @@ import java.util.List;
 
 public class RegisterDAO {
 
-    //Testing database code
+  //Testing database code
 
+    private static final String url = "jdbc:sqlite:C:/sqlitestudio-3.3.3 (1)/SQLiteStudio/SQLite database/doglyDB.db";
     public void saveRegistration(Registration registration) throws SQLException {
 
 
 
-        try (Connection connection = DriverManager.getConnection("jdbc:sqlite:C:/sqlitestudio-3.3.3 (1)/SQLiteStudio/RegDB.db")) {
-            String sql = "INSERT INTO REGISTER (first_name, last_name, email, username, password, register_date) " +
+        try (Connection connection = DriverManager.getConnection(url)) {
+            String sql = "INSERT INTO USER (first_name, last_name, email, username, password, register_date) " +
                     "VALUES (?, ?, ?, ?, ?, ?)";
 
             try (PreparedStatement statement = connection.prepareStatement(sql)) {
@@ -41,9 +42,9 @@ public class RegisterDAO {
         public List<Registration> getAllRegistrations() {
             List<Registration> registrations = new ArrayList<>();
 
-            try (Connection connection = DriverManager.getConnection("jdbc:sqlite:C:/sqlitestudio-3.3.3 (1)/SQLiteStudio/RegDB.db");
+            try (Connection connection = DriverManager.getConnection(url);
                  Statement statement = connection.createStatement();
-                 ResultSet resultSet = statement.executeQuery("SELECT * FROM REGISTER")) {
+                 ResultSet resultSet = statement.executeQuery("SELECT * FROM USER")) {
 
                 while (resultSet.next()) {
                     Registration registration = new Registration();
@@ -64,8 +65,8 @@ public class RegisterDAO {
         }
 
     public boolean checkEmailExists(String email) {
-        try (Connection connection = DriverManager.getConnection("jdbc:sqlite:C:/sqlitestudio-3.3.3 (1)/SQLiteStudio/RegDB.db")) {
-            String emailCheckQuery = "SELECT COUNT(*) FROM REGISTER WHERE email = ?";
+        try (Connection connection = DriverManager.getConnection(url)) {
+            String emailCheckQuery = "SELECT COUNT(*) FROM USER WHERE email = ?";
             try (PreparedStatement emailCheckStatement = connection.prepareStatement(emailCheckQuery)) {
                 emailCheckStatement.setString(1, email);
                 try (ResultSet emailCheckResult = emailCheckStatement.executeQuery()) {
@@ -79,8 +80,8 @@ public class RegisterDAO {
     }
 
     public boolean checkUsernameExists(String username) {
-        try (Connection connection = DriverManager.getConnection("jdbc:sqlite:C:/sqlitestudio-3.3.3 (1)/SQLiteStudio/RegDB.db")) {
-            String usernameCheckQuery = "SELECT COUNT(*) FROM REGISTER WHERE username = ?";
+        try (Connection connection = DriverManager.getConnection(url)) {
+            String usernameCheckQuery = "SELECT COUNT(*) FROM USER WHERE username = ?";
             try (PreparedStatement usernameCheckStatement = connection.prepareStatement(usernameCheckQuery)) {
                 usernameCheckStatement.setString(1, username);
                 try (ResultSet usernameCheckResult = usernameCheckStatement.executeQuery()) {
@@ -94,8 +95,8 @@ public class RegisterDAO {
     }
 
     public boolean checkPasswordExists(String password) {
-        try (Connection connection = DriverManager.getConnection("jdbc:sqlite:C:/sqlitestudio-3.3.3 (1)/SQLiteStudio/RegDB.db")) {
-            String passwordCheckQuery = "SELECT COUNT(*) FROM REGISTER WHERE password = ?";
+        try (Connection connection = DriverManager.getConnection(url)) {
+            String passwordCheckQuery = "SELECT COUNT(*) FROM USER WHERE password = ?";
             try (PreparedStatement passwordCheckStatement = connection.prepareStatement(passwordCheckQuery)) {
                 passwordCheckStatement.setString(1, password);
                 try (ResultSet passwordCheckResult = passwordCheckStatement.executeQuery()) {
@@ -109,8 +110,8 @@ public class RegisterDAO {
     }
 
     public boolean validateLogin(String usernameOrEmail, String password) {
-        try (Connection connection = DriverManager.getConnection("jdbc:sqlite:C:/sqlitestudio-3.3.3 (1)/SQLiteStudio/RegDB.db")) {
-            String loginCheckQuery = "SELECT COUNT(*) FROM REGISTER WHERE (username = ? OR email = ?) AND password = ?";
+        try (Connection connection = DriverManager.getConnection(url)) {
+            String loginCheckQuery = "SELECT COUNT(*) FROM USER WHERE (username = ? OR email = ?) AND password = ?";
             try (PreparedStatement loginCheckStatement = connection.prepareStatement(loginCheckQuery)) {
                 loginCheckStatement.setString(1, usernameOrEmail);
                 loginCheckStatement.setString(2, usernameOrEmail);
@@ -126,8 +127,8 @@ public class RegisterDAO {
     }
 
     public boolean validateEmail(String email) {
-        try (Connection connection = DriverManager.getConnection("jdbc:sqlite:C:/sqlitestudio-3.3.3 (1)/SQLiteStudio/RegDB.db")) {
-            String emailQuery = "SELECT COUNT(*) FROM REGISTER WHERE email = ?";
+        try (Connection connection = DriverManager.getConnection(url)) {
+            String emailQuery = "SELECT COUNT(*) FROM USER WHERE email = ?";
             try (PreparedStatement emailStatement = connection.prepareStatement(emailQuery)) {
                 emailStatement.setString(1, email);
                 try (ResultSet loginCheckResult = emailStatement.executeQuery()) {
@@ -141,8 +142,8 @@ public class RegisterDAO {
     }
 
     public boolean updatePassword(String email, String newPassword) {
-        try (Connection connection = DriverManager.getConnection("jdbc:sqlite:C:/sqlitestudio-3.3.3 (1)/SQLiteStudio/RegDB.db")) {
-            String updateQuery = "UPDATE REGISTER SET password = ? WHERE email = ?";
+        try (Connection connection = DriverManager.getConnection(url)) {
+            String updateQuery = "UPDATE USER SET password = ? WHERE email = ?";
 
 
 
