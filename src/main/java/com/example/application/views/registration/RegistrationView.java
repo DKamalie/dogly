@@ -82,31 +82,45 @@ public class RegistrationView extends VerticalLayout {
         buttonStyle.set("font-weight", "bold");
         buttonStyle.set("border-radius", "17px");
         buttonStyle.set("box-shadow", "0 5px 4px rgba(0, 0, 0, 0.2)");
+        buttonStyle.set("margin-right", "auto");
+        buttonStyle.set("margin-left", "auto");
 
         Style alreadyStyle = hL.getStyle();
         alreadyStyle.set("font-family", "Arial");
         alreadyStyle.set("font-size", "16px");
         alreadyStyle.set("font-weight", "bold");
+        alreadyStyle.set("margin-right", "auto");
+        alreadyStyle.set("margin-left", "auto");
 
         Style firstNameTextField = firstName.getStyle();
         firstNameTextField.set("font-family", "Arial");
         firstNameTextField.set("font-size", "15px");
+        firstNameTextField.set("margin-right", "auto");
+        firstNameTextField.set("margin-left", "auto");
 
         Style lastNameTextField = lastName.getStyle();
         lastNameTextField.set("font-family", "Arial");
-        firstNameTextField.set("font-size", "15px");
+        lastNameTextField.set("font-size", "15px");
+        lastNameTextField.set("margin-right", "auto");
+        lastNameTextField.set("margin-left", "auto");
 
         Style emailTextField = email.getStyle();
         emailTextField.set("font-family", "Arial");
         emailTextField.set("font-size", "15px");
+        emailTextField.set("margin-right", "auto");
+        emailTextField.set("margin-left", "auto");
 
         Style usernameTextField = username.getStyle();
         usernameTextField.set("font-family", "Arial");
         usernameTextField.set("font-size", "15px");
+        usernameTextField.set("margin-right", "auto");
+        usernameTextField.set("margin-left", "auto");
 
         Style passwordTextField = password.getStyle();
         passwordTextField.set("font-family", "Arial");
         passwordTextField.set("font-size", "15px");
+        passwordTextField.set("margin-right", "auto");
+        passwordTextField.set("margin-left", "auto");
 
         setMargin(true);
 

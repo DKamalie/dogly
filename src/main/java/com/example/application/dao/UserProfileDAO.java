@@ -1,6 +1,5 @@
 package com.example.application.dao;
 
-import com.example.application.domain.Registration;
 import com.example.application.domain.UserProfile;
 import com.vaadin.flow.component.notification.Notification;
 import java.sql.*;
@@ -13,7 +12,7 @@ public class UserProfileDAO {
             try (Connection connection = DriverManager.getConnection(
                     URL)) {
                 String sql = "INSERT INTO UserProfile (userprofileID, userID, locationID, name, age, description, profilePhoto) " +
-                        "VALUES (?, ?, ?, ?, ?, ?, ?)";
+                        "VALUES (?, ?, ?, ?, ?, ?, ?,?)";
 
                 try (PreparedStatement statement = connection.prepareStatement(sql)) {
                     statement.setString(1, userProfile.getUserprofileID());
