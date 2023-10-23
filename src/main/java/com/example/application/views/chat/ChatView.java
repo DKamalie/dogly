@@ -25,7 +25,7 @@ import java.util.UUID;
 @PageTitle("Chat")
 @Route(value = "chat", layout = MainLayout.class)
 @AnonymousAllowed
-@PermitAll 
+@PermitAll
 public class ChatView extends HorizontalLayout {
     public static class ChatTab extends Tab {
         private final ChatInfo chatInfo;
