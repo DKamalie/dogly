@@ -35,7 +35,7 @@ public class LandingView extends VerticalLayout {
 
     public LandingView()  {
 
-        logo = new Image("images/dogs.png", "");
+        logo = new Image("images/collection-dogs-different-breeds.png", "");
         logo.setWidth("75px");
         logo.setHeight("60px");
         aboutLink = new RouterLink("About", AboutView.class);
@@ -45,7 +45,7 @@ public class LandingView extends VerticalLayout {
         hL.add(logo, aboutLink, registerLink, loginLink);
         welcome = new Html("<div>Welcome to Dogly<br></div>");
         slogan = new Html("<div>Pawsitive connections, where dogs discover their ideal companions!<br></div>");
-        dog = new Image("images/dogss.png", "");
+        dog = new Image("images/lab.png", "");
         dog.setWidth("400px");
         dog.setHeight("200px");
         ad = new Html("<div>Are you a dog lover looking for the pawfect companion for your dog?<br>" +
