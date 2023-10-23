@@ -4,9 +4,7 @@ import com.example.application.components.appnav.AppNav;
 import com.example.application.components.appnav.AppNavItem;
 import com.example.application.data.entity.User;
 import com.example.application.security.AuthenticatedUser;
-import com.example.application.views.about.AboutView;
-import com.example.application.views.chat.ChatView;
-import com.example.application.views.comment.CommentView;
+import com.example.application.views.dogprofile.DogProfileView;
 import com.example.application.views.landing.LandingView;
 
 import com.vaadin.flow.component.applayout.AppLayout;
@@ -78,8 +76,7 @@ public class MainLayout extends AppLayout {
 
         if (accessChecker.hasAccess(LandingView.class)) {
             nav.addItem(new AppNavItem("Landing", LandingView.class, LineAwesomeIcon.PAW_SOLID.create()));
-            //nav.addItem(new AppNavItem("Comments", CommentView.class, LineAwesomeIcon.PAW_SOLID.create()));
-            //nav.addItem(new AppNavItem("Chat", ChatView.class, LineAwesomeIcon.PAW_SOLID.create()));
+            nav.addItem(new AppNavItem("DogProfileView", DogProfileView.class, LineAwesomeIcon.DOG_SOLID.create()));
             nav.addItem(new AppNavItem("About", AboutView.class, LineAwesomeIcon.PAW_SOLID.create()));
 
         }
