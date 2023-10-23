@@ -18,12 +18,14 @@ import com.vaadin.flow.router.RouteAlias;
 import com.vaadin.flow.server.auth.AnonymousAllowed;
 import com.vaadin.flow.theme.lumo.LumoUtility;
 import jakarta.annotation.security.PermitAll;
+import jakarta.annotation.security.RolesAllowed;
 
 import java.util.UUID;
 
 @PageTitle("Chat")
 @Route(value = "chat", layout = MainLayout.class)
 @AnonymousAllowed
+@PermitAll
 public class ChatView extends HorizontalLayout {
     public static class ChatTab extends Tab {
         private final ChatInfo chatInfo;

@@ -91,7 +91,7 @@ public class LoginView extends VerticalLayout {
             else {
                 Notification.show("Login successful!");
 
-                getUI().ifPresent(ui -> ui.navigate("about"));
+                getUI().ifPresent(ui -> ui.navigate("home"));
             }
         });
 

@@ -61,7 +61,7 @@ public class UserProfileView extends Div {
         txtUserDescription = new String("'Description'");
 
         description = new TextArea("Description");
-        description.setValue("My name is Lutho and I killed a dog by accident, not really. I love dogs.");
+        description.setValue("My dog is not just a pet; he's family. We share countless adventures and endless love! 🐶💕");
         description.setReadOnly(true);
 
 
@@ -76,8 +76,7 @@ public class UserProfileView extends Div {
         });
 
         dogImg.addClickListener(e -> {
-            dogImg.setWidth("366px");
-            dogImg.setHeight("254px");
+            getUI().ifPresent(ui ->  ui.navigate("dogprofile"));
         });
 
         back.addClickListener(e -> {
@@ -91,8 +90,8 @@ public class UserProfileView extends Div {
 
 
         btnMessage.addClickListener(e -> {
-            Notification.show("on menu page");
-            getUI().ifPresent(ui ->  ui.navigate("login"));
+            Notification.show("on Chat page");
+            getUI().ifPresent(ui ->  ui.navigate("chat"));
         });
 
 
