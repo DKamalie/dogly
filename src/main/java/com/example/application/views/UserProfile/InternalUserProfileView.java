@@ -310,17 +310,17 @@ public class InternalUserProfileView extends Div {
 
         Style descrip = description.getStyle();
         descrip.set("position","relative");
-        descrip.set("left",605+"px");
+        descrip.set("left",705+"px");
         descrip.set("width","500px");
 
         Style del = dogNAME.getStyle();
         del.set("position","relative");
-        del.set("left",600+"px");
+        del.set("left",700+"px");
         del.set("width","300px");
 
         Style txtDog = txtPets.getStyle();
         txtDog.set("position", "relative");
-        txtDog.set("left", 400+"px");
+        txtDog.set("left", 500+"px");
         txtDog.set("color", "black");
         txtDog.set("font-family", "Inter");
         txtDog.set("font-size", "20px");
@@ -331,7 +331,7 @@ public class InternalUserProfileView extends Div {
 
         Style txtdogName = txtDogsName.getStyle();
         txtdogName.set("position", "relative");
-        txtdogName.set("left", 590+"px");
+        txtdogName.set("left", 690+"px");
         txtdogName.set("color", "black");
         txtdogName.set("font-family", "Inter");
         txtdogName.set("font-size", "20px");
