@@ -19,7 +19,7 @@ import com.vaadin.flow.server.auth.AnonymousAllowed;
 @RouteAlias(value = "home", layout = MainLayout.class)
 @AnonymousAllowed
 public class HomeView extends VerticalLayout {
-
+//Home view
     public HomeView() {
         String[] postImageUrls = {
                 "/images/dog1.png",
