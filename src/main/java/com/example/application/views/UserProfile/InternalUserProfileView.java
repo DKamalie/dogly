@@ -18,8 +18,6 @@ import com.vaadin.flow.router.PageTitle;
 import com.vaadin.flow.router.Route;
 import com.vaadin.flow.server.auth.AnonymousAllowed;
 
-import java.sql.Blob;
-
 @PageTitle("User Profile")
 @Route(value = "User-Profile -- Internal User", layout = MainLayout.class)
 @AnonymousAllowed
@@ -28,7 +26,7 @@ public class InternalUserProfileView extends Div {
     private Label txtProfile;
     private Label txtPets;
     private Label txtDogsName;
-    private String txtUserDecription;
+    private String txtUserDescription;
     private TextArea description;
     private TextArea dogNAME;
     private Button btnEdit;
@@ -59,7 +57,7 @@ public class InternalUserProfileView extends Div {
         btnSave = new Button();
         btnSave2 = new Button();
 
-        Image btnBackImg = new Image("images/images.png", "Back button");
+        Image btnBackImg = new Image("images/dog.png", "Back button");
         btnBackImg.setWidth("40px");
 
         txtProfile = new Label("Profile");
@@ -70,10 +68,10 @@ public class InternalUserProfileView extends Div {
         profileImage.setWidth("106px");
         profileImage.setHeight("102px");
 
-        txtUserDecription = new String("Decription uao-ccjoiaosidddddddddddddddddddddddddd" + "\n" + "dddddddddddddddddddso k oddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddsj ojofoidj");
+        txtUserDescription = new String("'Description'");
 
         description = new TextArea("Description");
-        description.setValue("Decription ia , the girl who kisse dher brother. my name is luto and i killed a dog by accident not really");
+        description.setValue("My name is Lutho and I killed a dog by accident, not really. I love dogs.");
         description.setReadOnly(true);
 
         dogNAME  = new TextArea("Dogs Name:");
