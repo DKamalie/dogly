@@ -76,8 +76,7 @@ public class UserProfileView extends Div {
         });
 
         dogImg.addClickListener(e -> {
-            dogImg.setWidth("366px");
-            dogImg.setHeight("254px");
+            getUI().ifPresent(ui ->  ui.navigate("DogProfileView"));
         });
 
         back.addClickListener(e -> {
