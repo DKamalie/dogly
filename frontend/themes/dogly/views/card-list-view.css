@@ -68,6 +68,3 @@
   font-size: var(--lumo-font-size-xs);
   margin-right: var(--lumo-space-l);
 }
-.card-list-view .icon:hover {
-  color: red;
-}

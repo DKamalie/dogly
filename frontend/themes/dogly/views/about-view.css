@@ -1,0 +1,160 @@
+.mainGrid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: auto auto;
+    grid-template-areas:
+    "textDiv imageContainer";
+    justify-items: center;
+    align-items: center;
+}
+.textDiv {
+    grid-area: textDiv;
+}
+.imageContainer {
+    grid-area: imageContainer;
+}
+
+
+
+.textDiv {
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: 50px 50px 200px 200px;
+    grid-template-areas:
+    "back"
+    "h1"
+    "p1"
+    "p2";
+    align-items: center;
+    text-align: center;
+    margin-top: 5rem;
+}
+.back {
+    grid-area: back;
+}
+.h1 {
+
+}
+.p1 {
+    grid-area: p1;
+    width: 400px;
+}
+.p2 {
+    grid-area: p2;
+    width: 400px;
+}
+
+.imageContainer {
+    display:grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    grid-template-rows: 100px 100px 100px;
+    grid-template-areas:
+    "plant1 plant2 plant3 plant4"
+    "plant5 plant6 plant7 plant8"
+    "plant9 plant10 plant11 plant12";
+    grid-row-gap: 3rem;
+    grid-column-gap: 1rem;
+    justify-items: center;
+    align-items: center;
+    margin-top: 5rem;
+    border-radius: 10px;
+    -webkit-box-shadow: -20px 22px 24px 0px rgba(0,0,0,0.75);
+    -moz-box-shadow: -20px 22px 24px 0px rgba(0,0,0,0.75);
+    box-shadow: -20px 22px 24px 0px rgba(0,0,0,0.75);
+    padding: 2rem;
+    transition: 2s;
+}
+.imageContainer:hover {
+    transition: 2s;
+    -webkit-box-shadow: -20px 22px 24px 0px rgba(0,157,235,1);
+    -moz-box-shadow: -20px 22px 24px 0px rgba(0,157,235,1);
+    box-shadow: -20px 22px 24px 0px rgba(0,157,235,1);
+    .plant {
+        opacity: 50%;
+    }
+    .plant:hover {
+        opacity: 100%;
+    }
+}
+.plant1 {
+    grid-area: plant1;
+    border-radius: 10px;
+    width: 130px;
+    height: 130px;
+}
+.plant2 {
+    grid-area: plant2;
+    border-radius: 10px;
+    width: 130px;
+    height: 130px;
+}
+.plant3 {
+    grid-area: plant3;
+    border-radius: 10px;
+    width: 130px;
+    height: 130px;
+}
+.plant4 {
+    grid-area: plant4;
+    border-radius: 10px;
+    width: 130px;
+    height: 130px;
+}
+.plant5 {
+    grid-area: plant5;
+    border-radius: 10px;
+    width: 130px;
+    height: 130px;
+}
+.plant6 {
+    grid-area: plant6;
+    border-radius: 10px;
+    width: 130px;
+    height: 130px;
+}
+.plant7 {
+    grid-area: plant7;
+    border-radius: 10px;
+    width: 130px;
+    height: 130px;
+}
+.plant8 {
+    grid-area: plant8;
+    border-radius: 10px;
+    width: 130px;
+    height: 130px;
+}
+.plant9 {
+    grid-area: plant9;
+    border-radius: 10px;
+    width: 130px;
+    height: 130px;
+}
+.plant10 {
+    grid-area: plant10;
+    border-radius: 10px;
+    width: 130px;
+    height: 130px;
+}
+.plant11 {
+    grid-area: plant11;
+    border-radius: 10px;
+    width: 130px;
+    height: 130px;
+}
+.plant12 {
+    grid-area: plant12;
+    border-radius: 10px;
+    width: 130px;
+    height: 130px;
+}
+
+.plant:hover {
+    opacity: 100%;
+}
+.back {
+    width: 50px;
+    position: absolute;
+    top: 10.3%;
+    left: 18%;
+}

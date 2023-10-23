@@ -1,6 +1,12 @@
 package com.example.application.views.comment;
 
 import com.example.application.views.MainLayout;
+import com.example.application.websocket.ChatComponent;
+import com.example.application.websocket.ChatMessage;
+import com.example.application.websocket.MessageReceiver;
+import com.vaadin.flow.component.ComponentEvent;
+import com.vaadin.flow.component.ComponentEventListener;
+import com.vaadin.flow.component.button.Button;
 import com.vaadin.flow.component.grid.Grid;
 import com.vaadin.flow.component.grid.GridVariant;
 import com.vaadin.flow.component.html.Div;
@@ -15,18 +21,21 @@ import com.vaadin.flow.router.AfterNavigationObserver;
 import com.vaadin.flow.router.PageTitle;
 import com.vaadin.flow.router.Route;
 import com.vaadin.flow.server.auth.AnonymousAllowed;
+import com.vaadin.flow.spring.annotation.SpringComponent;
+import com.vaadin.flow.spring.annotation.UIScope;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.messaging.simp.SimpMessagingTemplate;
+
 import java.util.Arrays;
 import java.util.List;
 
-@PageTitle("Comment")
+@PageTitle("Comment Section")
 @Route(value = "comment", layout = MainLayout.class)
 @AnonymousAllowed
-public class CommentView extends Div implements AfterNavigationObserver {
-
+public class CommentView extends Div implements AfterNavigationObserver{
     Grid<Person> grid = new Grid<>();
-
     public CommentView() {
-        addClassName("comment-view");
+        addClassName("card-list-view");
         setSizeFull();
         grid.setHeight("100%");
         grid.addThemeVariants(GridVariant.LUMO_NO_BORDER, GridVariant.LUMO_NO_ROW_BORDERS);
@@ -90,60 +99,51 @@ public class CommentView extends Div implements AfterNavigationObserver {
     public void afterNavigation(AfterNavigationEvent event) {
 
         // Set some data when this view is displayed.
-        List<Person> persons = Arrays.asList( //
+        List<Person> persons = Arrays.asList(
                 createPerson("https://randomuser.me/api/portraits/men/42.jpg", "John Smith", "May 8",
-                        "In publishing and graphic design, Lorem ipsum is a placeholder text commonly used to demonstrate the visual form of a document without relying on meaningful content (also called greeking).",
-                        "1K", "500", "20"),
+                        "I can't resist those wagging tails and wet noses! Dogs bring so much joy into my life. 🐾❤️",
+                        "3K", "700", "50"),
                 createPerson("https://randomuser.me/api/portraits/women/42.jpg", "Abagail Libbie", "May 3",
-                        "In publishing and graphic design, Lorem ipsum is a placeholder text commonly used to demonstrate the visual form of a document without relying on meaningful content (also called greeking).",
-                        "1K", "500", "20"),
+                        "Every day is a 'paw'sitive day when you have a furry friend by your side! 🐶✨",
+                        "2K", "600", "45"),
                 createPerson("https://randomuser.me/api/portraits/men/24.jpg", "Alberto Raya", "May 3",
-
-                        "In publishing and graphic design, Lorem ipsum is a placeholder text commonly used to demonstrate the visual form of a document without relying on meaningful content (also called greeking).",
-                        "1K", "500", "20"),
+                        "Dog kisses and tail wags make my heart skip a beat. Life is better with a dog! 🐕💖",
+                        "4K", "800", "60"),
                 createPerson("https://randomuser.me/api/portraits/women/24.jpg", "Emmy Elsner", "Apr 22",
-
-                        "In publishing and graphic design, Lorem ipsum is a placeholder text commonly used to demonstrate the visual form of a document without relying on meaningful content (also called greeking).",
-                        "1K", "500", "20"),
+                        "In a world full of ordinary things, I'm grateful for the extraordinary love of my dog! 🐾❤️",
+                        "6K", "1200", "90"),
                 createPerson("https://randomuser.me/api/portraits/men/76.jpg", "Alf Huncoot", "Apr 21",
-
-                        "In publishing and graphic design, Lorem ipsum is a placeholder text commonly used to demonstrate the visual form of a document without relying on meaningful content (also called greeking).",
-                        "1K", "500", "20"),
+                        "My dog is not just a pet; he's family. We share countless adventures and endless love! 🐶💕",
+                        "3K", "700", "50"),
                 createPerson("https://randomuser.me/api/portraits/women/76.jpg", "Lidmila Vilensky", "Apr 17",
-
-                        "In publishing and graphic design, Lorem ipsum is a placeholder text commonly used to demonstrate the visual form of a document without relying on meaningful content (also called greeking).",
-                        "1K", "500", "20"),
+                        "There's no love purer than the love of a dog. My furry companion fills my days with happiness! 🐕😊",
+                        "6K", "1200", "90"),
                 createPerson("https://randomuser.me/api/portraits/men/94.jpg", "Jarrett Cawsey", "Apr 17",
-                        "In publishing and graphic design, Lorem ipsum is a placeholder text commonly used to demonstrate the visual form of a document without relying on meaningful content (also called greeking).",
-                        "1K", "500", "20"),
+                        "Dogs teach us loyalty, patience, and the true meaning of unconditional love. Forever grateful for my furry friend! 🐾❤️",
+                        "6K", "1200", "90"),
                 createPerson("https://randomuser.me/api/portraits/women/94.jpg", "Tania Perfilyeva", "Mar 8",
-
-                        "In publishing and graphic design, Lorem ipsum is a placeholder text commonly used to demonstrate the visual form of a document without relying on meaningful content (also called greeking).",
-                        "1K", "500", "20"),
+                        "Life is 'paw'sitively amazing with a dog by your side. Here's to endless cuddles and wagging tails! 🐶💫",
+                        "3K", "700", "50"),
                 createPerson("https://randomuser.me/api/portraits/men/16.jpg", "Ivan Polo", "Mar 5",
-
-                        "In publishing and graphic design, Lorem ipsum is a placeholder text commonly used to demonstrate the visual form of a document without relying on meaningful content (also called greeking).",
-                        "1K", "500", "20"),
+                        "My dog isn't just a pet; he's my best friend, confidant, and partner in crime. Together, we navigate life's adventures! 🐾🌟",
+                        "6K", "1200", "90"),
                 createPerson("https://randomuser.me/api/portraits/women/16.jpg", "Emelda Scandroot", "Mar 5",
-
-                        "In publishing and graphic design, Lorem ipsum is a placeholder text commonly used to demonstrate the visual form of a document without relying on meaningful content (also called greeking).",
-                        "1K", "500", "20"),
+                        "In the presence of a dog, life's struggles melt away. Grateful for the unconditional love and endless joy my furry friend brings! 🐶❤️",
+                        "2K", "600", "45"),
                 createPerson("https://randomuser.me/api/portraits/men/67.jpg", "Marcos Sá", "Mar 4",
-
-                        "In publishing and graphic design, Lorem ipsum is a placeholder text commonly used to demonstrate the visual form of a document without relying on meaningful content (also called greeking).",
-                        "1K", "500", "20"),
+                        "Dogs have a unique way of finding the way to your heart. My dog's paw prints are forever imprinted on my soul! 🐾💖",
+                        "6K", "1200", "90"),
                 createPerson("https://randomuser.me/api/portraits/women/67.jpg", "Jacqueline Asong", "Mar 2",
-
-                        "In publishing and graphic design, Lorem ipsum is a placeholder text commonly used to demonstrate the visual form of a document without relying on meaningful content (also called greeking).",
-                        "1K", "500", "20")
-
+                        "There's nothing more heartwarming than a dog's love. Each wag of the tail reminds us of the simple joys in life! 🐾😊",
+                        "4K", "800", "60")
         );
+
 
         grid.setItems(persons);
     }
 
     private static Person createPerson(String image, String name, String date, String post, String likes,
-            String comments, String shares) {
+                                       String comments, String shares) {
         Person p = new Person();
         p.setImage(image);
         p.setName(name);
