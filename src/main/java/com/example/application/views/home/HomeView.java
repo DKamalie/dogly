@@ -1,7 +1,7 @@
 package com.example.application.views.home;
 
 import com.example.application.views.MainLayout;
-import com.example.application.views.about.AboutView;
+import com.vaadin.flow.component.UI;
 import com.vaadin.flow.component.button.Button;
 import com.vaadin.flow.component.html.Div;
 import com.vaadin.flow.component.html.Image;
@@ -12,7 +12,6 @@ import com.vaadin.flow.component.orderedlayout.VerticalLayout;
 import com.vaadin.flow.router.PageTitle;
 import com.vaadin.flow.router.Route;
 import com.vaadin.flow.router.RouteAlias;
-import com.vaadin.flow.router.RouterLink;
 import com.vaadin.flow.server.auth.AnonymousAllowed;
 
 @PageTitle("Home")
@@ -50,6 +49,12 @@ public class HomeView extends VerticalLayout {
             userIcon.setHeight("50px");
             userIcon.getStyle().set("border-radius", "50%");
 
+            userIcon.addClickListener(event -> UI.getCurrent().navigate("personal"));
+
+            HorizontalLayout userInfoLayout = new HorizontalLayout();
+            userInfoLayout.add(userIcon);
+            userInfoLayout.setVerticalComponentAlignment(Alignment.CENTER, userIcon);
+
 
             Paragraph caption = new Paragraph(postCaptions[i]);
             caption.getStyle().set("color", "white");
@@ -86,10 +91,6 @@ public class HomeView extends VerticalLayout {
             commentButton.getStyle().set("border-radius", "5px");
 
             commentButton.addClickListener(event -> commentButton.getUI().ifPresent(ui -> ui.navigate("comment")));
-
-            HorizontalLayout userInfoLayout = new HorizontalLayout();
-            userInfoLayout.add(userIcon);
-            userInfoLayout.setVerticalComponentAlignment(Alignment.CENTER, userIcon);
 
             VerticalLayout postLayout = new VerticalLayout();
             postLayout.add(userInfoLayout, postImage, caption, likeButton, commentButton);
