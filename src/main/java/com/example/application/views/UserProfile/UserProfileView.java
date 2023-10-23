@@ -76,7 +76,7 @@ public class UserProfileView extends Div {
         });
 
         dogImg.addClickListener(e -> {
-            getUI().ifPresent(ui ->  ui.navigate("DogProfileView"));
+            getUI().ifPresent(ui ->  ui.navigate("dogprofile"));
         });
 
         back.addClickListener(e -> {
