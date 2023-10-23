@@ -91,8 +91,8 @@ public class UserProfileView extends Div {
 
 
         btnMessage.addClickListener(e -> {
-            Notification.show("on menu page");
-            getUI().ifPresent(ui ->  ui.navigate("login"));
+            Notification.show("on Chat page");
+            getUI().ifPresent(ui ->  ui.navigate("chat"));
         });
 
 
