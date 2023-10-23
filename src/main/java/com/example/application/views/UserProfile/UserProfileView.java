@@ -25,7 +25,7 @@ public class UserProfileView extends Div {
     private Label txtProfile;
     private Label txtPets;
     private Label txtDogsName;
-    private String txtUserDecription;
+    private String txtUserDescription;
     private TextArea description;
 
     private Button back;
@@ -56,10 +56,10 @@ public class UserProfileView extends Div {
         profileImage.setWidth("106px");
         profileImage.setHeight("102px");
 
-        txtUserDecription = new String("Decription uao-ccjoiaosidddddddddddddddddddddddddd" + "\n" + "dddddddddddddddddddso k oddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddsj ojofoidj");
+        txtUserDescription = new String("'Description'");
 
         description = new TextArea("Description");
-        description.setValue("Decription ia , the girl who kisse dher brother. my name is luto and i killed a dog by accident not really");
+        description.setValue("My name is Lutho and I killed a dog by accident, not really. I love dogs.");
         description.setReadOnly(true);
 
 
