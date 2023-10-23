@@ -27,6 +27,7 @@ public class UserProfileView extends Div {
     private Label txtDogsName;
     private String txtUserDecription;
     private TextArea description;
+    private Button next;
 
     private Button back;
     VerticalLayout mainFrame = new VerticalLayout();
@@ -44,6 +45,7 @@ public class UserProfileView extends Div {
         back = new Button();
         btnMessage = new Button("Message");
         btnFollow = new Button("Follow");
+        next = new Button("");
 
         Image btnBackImg = new Image("images/images.png", "Back button");
         btnBackImg.setWidth("40px");
@@ -83,10 +85,14 @@ public class UserProfileView extends Div {
             getUI().ifPresent(ui ->  ui.navigate("about"));
         });
 
+        next.addClickListener(e -> {
+            Notification.show("Next photo");
+        });
+
+
         btnMessage.addClickListener(e -> {
             Notification.show("on menu page");
             getUI().ifPresent(ui ->  ui.navigate("login"));
-
         });
 
 
@@ -117,6 +123,18 @@ public class UserProfileView extends Div {
         back.addThemeVariants(ButtonVariant.LUMO_TERTIARY,
                 ButtonVariant.LUMO_SUCCESS);
 
+        Style hhh = next.getStyle();
+        next.setSizeUndefined();
+        hhh.set("background-image", "url('images/back2.png')");
+        hhh.set("background-repeat", "no-repeat");
+        hhh.set("background-size","50px 30px");
+        hhh.set("padding","3px");
+        hhh.set("width","51px");
+        hhh.set("align","center");
+        hhh.set("height","28px");
+        next.addThemeVariants(ButtonVariant.LUMO_TERTIARY,
+                ButtonVariant.LUMO_SUCCESS);
+
 
         topBar.add(back);
         this.add(topBar);
@@ -134,6 +152,7 @@ public class UserProfileView extends Div {
         bottom.add(txtPets);
         bottom.add(txtDogsName);
         bottom.add(dogImg);
+       // bottom.add(next);
         this.add(bottom);
 
         getStyles();
@@ -166,14 +185,11 @@ public class UserProfileView extends Div {
         btnM.set("width","125px");
 
 
-
-
-
         mainFrame.setWidth("750px");
 
         Style profile = txtProfile.getStyle();
         profile.set("position", "relative");
-        profile.set("left", 625+"px");
+        profile.set("left", 895+"px");
         profile.set("color", "black");
         profile.set("font-family", "Inter");
         profile.set("font-size", "22px");
@@ -184,12 +200,12 @@ public class UserProfileView extends Div {
 
         Style descrip = description.getStyle();
         descrip.set("position","relative");
-        descrip.set("left",435+"px");
+        descrip.set("left",695+"px");
         descrip.set("width","500px");
 
         Style txtDog = txtPets.getStyle();
         txtDog.set("position", "relative");
-        txtDog.set("left", 400+"px");
+        txtDog.set("left", 650+"px");
         txtDog.set("color", "black");
         txtDog.set("font-family", "Inter");
         txtDog.set("font-size", "20px");
@@ -200,7 +216,7 @@ public class UserProfileView extends Div {
 
         Style txtdogName = txtDogsName.getStyle();
         txtdogName.set("position", "relative");
-        txtdogName.set("left", 590+"px");
+        txtdogName.set("left", 870+"px");
         txtdogName.set("color", "black");
         txtdogName.set("font-family", "Inter");
         txtdogName.set("font-size", "20px");
