@@ -77,7 +77,7 @@ public class MainLayout extends AppLayout {
 
         if (accessChecker.hasAccess(LandingView.class)) {
             nav.addItem(new AppNavItem("Landing", LandingView.class, LineAwesomeIcon.PAW_SOLID.create()));
-            nav.addItem(new AppNavItem("Test", CommentView.class, LineAwesomeIcon.PAW_SOLID.create()));
+            nav.addItem(new AppNavItem("Comments", CommentView.class, LineAwesomeIcon.PAW_SOLID.create()));
             nav.addItem(new AppNavItem("About", AboutView.class, LineAwesomeIcon.PAW_SOLID.create()));
 
         }
