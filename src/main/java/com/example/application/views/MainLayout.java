@@ -4,12 +4,8 @@ import com.example.application.components.appnav.AppNav;
 import com.example.application.components.appnav.AppNavItem;
 import com.example.application.data.entity.User;
 import com.example.application.security.AuthenticatedUser;
-import com.example.application.views.about.AboutView;
-import com.example.application.views.comment.CommentView;
-import com.example.application.views.connections.ConnectionsView;
-import com.example.application.views.nearby.NearbyView;
-import com.example.application.views.pages.PagesView;
-import com.example.application.views.personal.PersonalView;
+import com.example.application.views.landing.LandingView;
+
 import com.vaadin.flow.component.applayout.AppLayout;
 import com.vaadin.flow.component.applayout.DrawerToggle;
 import com.vaadin.flow.component.avatar.Avatar;
@@ -70,33 +66,15 @@ public class MainLayout extends AppLayout {
         addToDrawer(header, scroller, createFooter());
     }
 
+
+
     private AppNav createNavigation() {
         // AppNav is not yet an official component.
         // For documentation, visit https://github.com/vaadin/vcf-nav#readme
         AppNav nav = new AppNav();
 
-        if (accessChecker.hasAccess(PagesView.class)) {
-            nav.addItem(new AppNavItem("Pages", PagesView.class, LineAwesomeIcon.GLOBE_SOLID.create()));
-
-        }
-        if (accessChecker.hasAccess(NearbyView.class)) {
-            nav.addItem(new AppNavItem("Nearby", NearbyView.class, LineAwesomeIcon.TH_LIST_SOLID.create()));
-
-        }
-        if (accessChecker.hasAccess(CommentView.class)) {
-            nav.addItem(new AppNavItem("Comment", CommentView.class, LineAwesomeIcon.LIST_SOLID.create()));
-
-        }
-        if (accessChecker.hasAccess(ConnectionsView.class)) {
-            nav.addItem(new AppNavItem("Connections", ConnectionsView.class, LineAwesomeIcon.COMMENTS.create()));
-
-        }
-        if (accessChecker.hasAccess(PersonalView.class)) {
-            nav.addItem(new AppNavItem("Personal", PersonalView.class, LineAwesomeIcon.USER.create()));
-
-        }
-        if (accessChecker.hasAccess(AboutView.class)) {
-            nav.addItem(new AppNavItem("About", AboutView.class, LineAwesomeIcon.FILE.create()));
+        if (accessChecker.hasAccess(LandingView.class)) {
+            nav.addItem(new AppNavItem("Landing", LandingView.class, LineAwesomeIcon.PAW_SOLID.create()));
 
         }
 
